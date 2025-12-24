@@ -1,10 +1,11 @@
-import json, requests, urllib.parse
+import json, requests
+import urllib.parse as urlp
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 class Handler(BaseHTTPRequestHandler):
         def do_GET(self):
-                path = urllib.parse.urlparse(self.path).path
-                path = path.lstrip("/").replace("%2F", "/").replace("%3A", ":")
+                path = urlp.urlparse(self.path).path
+                path = urlp.unquote(path.lstrip("/"))
 
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json")
