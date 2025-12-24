@@ -4,7 +4,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 class Handler(BaseHTTPRequestHandler):
         def do_GET(self):
                 path = urllib.parse.urlparse(self.path).path
-                path = path.replace("%2F", "/").replace("%3A", ":")
+                path = path.lstrip("/").replace("%2F", "/").replace("%3A", ":")
 
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json")
