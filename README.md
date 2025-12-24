@@ -1,6 +1,6 @@
 # ChickenSuite HTML Requests From Native Scratch
 
-CHRFNS is a method of allowing Scratch to do GET requests using [Python](https://python.org) and [Requestly](https://requestly.com)
+CHRFNS is a method of allowing Scratch to do GET requests using [Python](https://python.org) and [Requestly](https://requestly.com).
 
 ## Dependencies
 
