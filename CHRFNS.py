@@ -8,7 +8,7 @@ EXCEPTIONS = {
     "chrfns://ver/": "CHRFNS Server v1.1",
     "chrfns://credits/": "Created by @0x1194 on scratch.mit.edu",
     # User Input Exceptions (DANGEROUS!!!)
-    # "chrfns://eval/": lambda path: eval(path.removeprefix("chrfns://eval/")),
+    # "chrfns://eval/": lambda path: eval(path.removeprefix("chrfns://eval/").removesuffix("/")),
 }
 
 class Handler(BaseHTTPRequestHandler):
