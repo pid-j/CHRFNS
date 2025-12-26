@@ -3,9 +3,12 @@ import urllib.parse as urlp
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 EXCEPTIONS = {
-    "chrfns://ping": "Pong. Hello from Syria!",
-    "chrfns://ver": "CHRFNS Server v1.1",
-    "chrfns://credits": "Created by @0x1194 on scratch.mit.edu",
+    # Informational Exceptions
+    "chrfns://ping/": "Pong. Hello from Syria!",
+    "chrfns://ver/": "CHRFNS Server v1.1",
+    "chrfns://credits/": "Created by @0x1194 on scratch.mit.edu",
+    # User Input Exceptions (DANGEROUS!!!)
+    # "chrfns://eval/": lambda path: eval(path.removeprefix("chrfns://eval/")),
 }
 
 class Handler(BaseHTTPRequestHandler):
@@ -19,7 +22,7 @@ class Handler(BaseHTTPRequestHandler):
                 self.end_headers()
 
                 for e in EXCEPTIONS.keys():
-                    if path.startswith(e):
+                    if (path + "/").startswith(e):
                         f = EXCEPTIONS[e]
                         if callable(f): f = f(path)
                         r = f.replace(
