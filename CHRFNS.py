@@ -2,13 +2,18 @@ import json, requests
 import urllib.parse as urlp
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
+def usreval(path: str) -> str:
+    a = eval(path.removeprefix("chrfns://eval/").removesuffix("/"))
+    if a is not None: return str(a)
+    return ""
+
 EXCEPTIONS = {
     # Informational Exceptions
     "chrfns://ping/": "Pong. Hello from Syria!",
     "chrfns://ver/": "CHRFNS Server v1.1",
     "chrfns://credits/": "Created by @0x1194 on scratch.mit.edu",
     # User Input Exceptions (DANGEROUS!!!)
-    #"chrfns://eval/": lambda path: eval(path.removeprefix("chrfns://eval/").removesuffix("/")),
+    #"chrfns://eval/": usreval
 }
 
 class Handler(BaseHTTPRequestHandler):
