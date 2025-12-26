@@ -8,7 +8,7 @@ EXCEPTIONS = {
     "chrfns://ver/": "CHRFNS Server v1.1",
     "chrfns://credits/": "Created by @0x1194 on scratch.mit.edu",
     # User Input Exceptions (DANGEROUS!!!)
-    # "chrfns://eval/": lambda path: eval(path.removeprefix("chrfns://eval/").removesuffix("/")),
+    #"chrfns://eval/": lambda path: eval(path.removeprefix("chrfns://eval/").removesuffix("/")),
 }
 
 class Handler(BaseHTTPRequestHandler):
@@ -28,13 +28,15 @@ class Handler(BaseHTTPRequestHandler):
                         r = f.replace(
                             "\n", "\\n").replace(
                             "\r", "\\r").replace(
-                            "\t", "\\t").strip()
+                            "\t", "\\t").replace(
+                            "\x1b", "\\e").strip()
                         self.wfile.write(bytes(json.dumps({"result": r}), "utf-8"))
                         return
                 r = requests.get(path).text.replace(
                     "\n", "\\n").replace(
                     "\r", "\\r").replace(
-                    "\t", "\\t").strip()
+                    "\t", "\\t").replace(
+                    "\x1b", "\\e").strip()
                 self.wfile.write(bytes(json.dumps({"result": r}), "utf-8"))
 
 def main() -> None:
