@@ -2,18 +2,30 @@ import json, requests
 import urllib.parse as urlp
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
-def usreval(path: str) -> str:
-    a = eval(path.removeprefix("chrfns://eval/").removesuffix("/"))
-    if a is not None: return str(a)
+def nsac_get(path: str) -> str:
+    path = path.removeprefix("nsac://").removesuffix("/")
+
+    if len(path.split("/")) <= 2: path += "/"
+    if path.endswith("/"): path += "index.html"
+    
+    r = requests.get(
+        "https://raw.githubusercontent.com/pid-j/NSAC/refs/heads/main/web/%s" % path
+    ).text
+    if r is not None: return str(r)
     return ""
 
 EXCEPTIONS = {
     # Informational Exceptions
-    "chrfns://ping/": "Pong. Hello from Syria!",
-    "chrfns://ver/": "CHRFNS Server v1.1",
+    "chrfns://ping/": "Pong. 0x1194 says hello from Syria!",
+    "chrfns://ver/": "CHRFNS Server v1.0-alpha",
     "chrfns://credits/": "Created by @0x1194 on scratch.mit.edu",
-    # User Input Exceptions (DANGEROUS!!!)
-    # "chrfns://eval/": usreval
+    "chrfns://help/": "Hey there! If you're seeing this, that means "\
+        "the setup succeeded. So.. welcome to this page, I guess! "\
+        "This is still work in progress, so... I guess... "\
+        "Try typing chrfns://ver/ to see the version of this server. "\
+        "Well, it's been fun talking to you. Adios! -0x1194",
+    # NSAC Integration (https://github.com/pid-j/NSAC)
+    "nsac://": nsac_get
 }
 
 class Handler(BaseHTTPRequestHandler):
