@@ -2,7 +2,7 @@
 
 ![CHRFNS Icon](icon.png)
 
-CHRFNS, short for ChickenSuite HTML Requests From Native Scratch, is a method of allowing Scratch to do GET requests using [Python](https://python.org) and [Requestly](https://requestly.com).
+CHRFNS, short for ChickenSuite HTML Requests From Native Scratch, is a method of allowing Scratch (and some forks) to do GET requests using [Python](https://python.org) and [Requestly](https://requestly.com).
 
 ## Dependencies
 
@@ -21,7 +21,9 @@ You will need:
 To use CHRFNS, you must do some things:
 
 1. Download and install the dependencies.
-2. Import and enable [this Requestly rule](https://app.requestly.io/rules#sharedList/2614d31583e242e58098486af2f547ad-CHRFNS).
+2. Import and enable [these Requestly rules](https://app.requestly.io/rules#sharedList/70f4f198ee2141df97f7dee1006f56ed-requestly_shared_list_30_12_2025).
+    - The `Scratch` rule is used for Scratch.
+    - The `Turbowarp` rule is used for Turbowarp and forks of Turbowarp, e.g. Penguinmod.
 3. Whenever you want to use CHRFNS, execute CHRFNS.py.
 
 You should now be able to use CHRFNS.
