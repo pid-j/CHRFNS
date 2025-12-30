@@ -4,7 +4,13 @@ CHRFNS is a method of allowing Scratch to do GET requests using [Python](https:/
 
 ## Dependencies
 
-You will need Python 3, urllib, requests, and the Requestly extension.
+You will need:
+- [Python 3.x](https://python.org)
+    - urllib.parse
+    - html.parser
+    - html.entities
+    - requests
+- [Requestly](https://requestly.com)
 
 ## Usage
 
