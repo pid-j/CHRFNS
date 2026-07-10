@@ -87,6 +87,9 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_header("Access-Control-Allow-Origin", "*")
                 self.end_headers()
 
+                try: path = path[:len(path) - path[::-1].index("=pmatsemit_ehcac_raelc") - len("=pmatsemit_ehcac_raelc") - 1]
+                except IndexError: pass
+
                 for e in EXCEPTIONS.keys():
                     if (path + "/").startswith(e):
                         f = EXCEPTIONS[e]
