@@ -64,7 +64,7 @@ def parse_html(path: str) -> str:
 EXCEPTIONS = {
     # Informational Exceptions
     "chrfns://ping/": "Pong. 0x1194 says hello from Syria!",
-    "chrfns://ver/": "CHRFNS Server v1.0-beta",
+    "chrfns://ver/": "CHRFNS Server v1.0",
     "chrfns://credits/": "Created by @0x1194 on scratch.mit.edu",
     "chrfns://help/": "Hey there! If you're seeing this, that means "\
         "the setup succeeded. So.. welcome to this page, I guess! "\
